@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 7</title>
+    <style>
+        h1 {
+            color: darkblue;
+        }
+
+        img {
+            position: relative;
+            animation: train 30s infinite;
+        }
+
+        @keyframes train {
+            from {
+                left: 0%;
+            }
+
+            to {
+                left: 50%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="img1" src="./train1.png" alt="train_img">
+    <center>
+        <h1>Click the following buttons to handle animation</h1>
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
+    </center>
+</body>
+<script>
+    function start() {
+        let i1 = document.getElementById("img1");
+        // i1.style.animation = "train 60s infinite" // can use this
+        i1.style.animationPlayState="running";
+        console.log()
+    }
+    function stop() {
+        let i1 = document.getElementById("img1");
+        // i1.style.animation = "train 60s 0" // can use this 
+        i1.style.animationPlayState="paused";
+    }
+</script>
+</html>

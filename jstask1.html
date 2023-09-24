@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 1</title>
+    <style>
+        center {
+            font-size: 50px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        input {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+        }
+
+        button {
+            position: relative;
+            display: inline-block;
+            padding: 20px 40px;
+            color: rgb(29, 23, 203);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.5s;
+            letter-spacing: 2px;
+            overflow: hidden;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        button:hover {
+            background: chartreuse;
+            color: #06535b;
+            box-shadow: 0 0 5px chartreuse,
+                0 0 25px chartreuse,
+                0 0 20px chartreuse,
+                0 0 5px chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <Label>Enter Number Here</Label><br>
+        <input type="number" id="num" placeholder="Enter a number"><br>
+        <button type="submit" onclick="reverse()">submit</button><br><br>
+        <div id="result"></div>
+    </center>
+</body>
+<script>
+    function reverse() {
+        let num = document.getElementById("num");
+        let rem = 0;
+        let res = document.getElementById("result");
+        num = parseInt(num.value);
+        let num1 = 0;
+        while (num > 0) {
+            let num1 = num % 10;
+            rem = rem * 10 + num1;
+            num = Math.floor(num / 10);
+        }
+        res.innerHTML = "Reversed number output: " + rem;
+        res.style = "color: deepskyblue;font-size:30px";
+        console.log(rem);
+    }
+</script>
+
+</html>

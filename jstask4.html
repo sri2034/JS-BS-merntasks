@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 4</title>
+</head>
+
+<body>
+    <button id="date" onclick="showDate()">Show Date</button>
+    <div id="resdate"></div>
+    <button id="time" onclick="showTime()">Show Time</button>
+    <div id="restime"></div>
+
+    <script>
+        function showDate() {
+            const currentDate = new Date();
+            const day = currentDate.getDate();
+            const monthName = currentDate.toLocaleDateString('en-US', { month: 'long' });
+            const year = currentDate.getFullYear();
+            document.getElementById("resdate").textContent = `${day}/${monthName}/${year}`;
+        }
+
+        function showTime() {
+            const currentTime = new Date();
+            currentTime.setHours(currentTime.getHours() + 5); // Add 5 hours for GMT+5
+            currentTime.setMinutes(currentTime.getMinutes() + 30); // Add 30 minutes for GMT+5:30
+
+            const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            const dayOfWeek = daysOfWeek[currentTime.getDay()];
+            const month = months[currentTime.getMonth()];
+
+            const day = currentTime.getDate();
+            const year = currentTime.getFullYear();
+            const hours = currentTime.getHours().toString().padStart(2, '0');
+            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+            const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+            const timeZone = '(Indian Standard Time)';
+
+            document.getElementById("restime").textContent = `${dayOfWeek} ${month} ${day} ${year} ${hours}:${minutes}:${seconds} GMT+0530 ${timeZone}`;
+        }
+    </script>
+</body>
+
+</html>

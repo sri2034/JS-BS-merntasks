@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 2</title>
+    <style>
+        center {
+            font-size: 50px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        input {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+        }
+
+        button {
+            position: relative;
+            display: inline-block;
+            padding: 20px 40px;
+            color: rgb(29, 23, 203);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.5s;
+            letter-spacing: 2px;
+            overflow: hidden;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        button:hover {
+            background: chartreuse;
+            color: #06535b;
+            box-shadow: 0 0 5px chartreuse,
+                0 0 25px chartreuse,
+                0 0 20px chartreuse,
+                0 0 5px chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <label>Enter String Here</label><br>
+        <input type="text" id="str" placeholder="Enter a String"><br>
+        <button type="submit" onclick="sortStr()">submit</button><br><br>
+        <div id="result"></div>
+    </center>
+</body>
+<script>
+    function sortStr() {
+        let str = document.getElementById("str").value;
+        let res = document.getElementById("result");
+        let strArray = [];
+        for (let i = 0; i < str.length; i++) {
+            strArray.push(str.charAt(i));
+        }
+
+        let len = strArray.length;
+
+        for (let i = 0; i < len - 1; i++) {
+            for (let j = 0; j < len - i - 1; j++) {
+                if (strArray[j] > strArray[j + 1]) {
+                    // Swap characters
+                    let temp = strArray[j];
+                    strArray[j] = strArray[j + 1];
+                    strArray[j + 1] = temp;
+                }
+            }
+        }
+
+        let sortedStr = '';
+        for (let i = 0; i < len; i++) {
+            sortedStr += strArray[i];
+        }
+        res.innerHTML = "Sorted string output: " + sortedStr;
+        res.style.color = "skyblue";
+        res.style.fontSize = "30px";
+    }
+
+</script>
+
+</html>

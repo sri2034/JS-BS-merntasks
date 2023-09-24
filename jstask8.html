@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 8</title>
+    <style>
+        table {
+            background-image: linear-gradient(to bottom left, rgba(245, 245, 154, 0.783) 5%, rgba(239, 154, 187, 0.829) 65%);
+            padding: 5px 50px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .inp {
+            width: 400px;
+            min-height: 18px;
+        }
+
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        button {
+            border-radius: 20px;
+            background-color: red;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+        }
+
+        p {
+            color: red;
+            display: inline;
+        }
+
+        td {
+            padding-right: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table align="center">
+        <tr>
+            <td colspan="3">
+                <h1>Registration form</h1>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="fn">First Name</label></td>
+            <td><input class="inp field" type="text" id="fn"></td>
+            <td>
+                <p id="fnp">POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="ln">Last Name</label></td>
+            <td><input class="inp field" type="text" id="ln"></td>
+            <td>
+                <p id="lnp">POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="email">Email</label></td>
+            <td><input class="inp" type="email" id="email" name="email"></td>
+            <td>
+                <p id="ppwd">POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="pwd">Password</label></td>
+            <td><input class="inp" type="password" id="pwd"></td>
+            <td>
+                <p>POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="rpwd">Re-enter Password</label></td>
+            <td><input class="inp" type="password" id="rpwd"></td>
+            <td>
+                <p>POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label>Gender</label></td>
+            <td>
+                <input type="radio" name="gn" checked>Male<br>
+                <input type="radio" name="gn">Female
+            </td>
+        <tr>
+            <td align="right"><label for="age">Age</label></td>
+            <td><input class="inp" type="number" id="age"></td>
+            <td>
+                <p>POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="ph">Phone Number</label></td>
+            <td><input class="inp" type="number" id="ph" placeholder="no country code"></td>
+            <td>
+                <p>POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="ad">Address</label></td>
+            <td>
+                <textarea class="inp" name="ad" id="ad" cols="30" rows="7"></textarea>
+            </td>
+            <td>
+                <p>POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="s">State</label></td>
+            <td><input class="inp field" type="text" id="s"></td>
+            <td>
+                <p id="ps">POOR</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="cn">Country</label></td>
+            <td>
+                <select name="cn" id="cn">
+                    <option value="none">Choose your country</option>
+                    <option value="India">India</option>
+                    <option value="UK">UK</option>
+                    <option value="USA">USA</option>
+                    <option value="nepal">Nepal</option>
+                    <option value="Aus">Australia</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label>Laguages Known</label></td>
+            <td>
+                <input name="english" type="checkbox">English
+                <input name="telugu" type="checkbox">Telugu
+                <input name="hindi" type="checkbox">Hindi
+                <input name="tamil" type="checkbox">Tamil
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="left"><input name="declaration" type="checkbox" checked>Hereby I declare all the
+                given details are true
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">Log in to <a href="https://www.ethnus.com">Ethnus</a> website </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center"><button onclick="register()" type="submit">REGISTER</button></td>
+        </tr>
+    </table>
+    <div style="white-space: pre;">
+        note:
+        validations
+        input first name last name state - capital letter compulsory at begin
+        email ,phone number password as specified regular exp
+        age by no if digits({1,3})
+        address by length>15
+        take care of check boxes
+    </div>
+</body>
+<script>
+    function register() {
+        let m = false;
+        //checkmarks
+        let dec = document.getElementsByName('declaration');
+        if (dec.checked == true) {
+            m = true;
+        }
+        else {
+            m = false;
+        }
+
+        let language1 = document.getElementsByName('english');
+        let language2 = document.getElementsByName('telugu');
+        let language3 = document.getElementsByName('hindi');
+        let language4 = document.getElementsByName('tamil');
+        if (language1.checked == true | language2.checked == true | language3.checked == true | language4.checked == true) {
+            m = true;
+            console.log("ijjj")
+        }
+        else {
+            m = false;
+        }
+    }
+    //for all inp
+    var inpfs = document.querySelectorAll('.inp');
+    inpfs.forEach(function (inpf) {
+        inpf.addEventListener('mousemove', runtest);
+    });
+    function runtest(ef) {
+        var inpf = ef.target;
+        var val = inpf.value;
+        if (val == "") {
+            m = false;
+        }
+    }
+    // for fn , ln and state
+    var txtfields = document.querySelectorAll('.field');
+    txtfields.forEach(function (txtfield) {
+        txtfield.addEventListener('keyup', runEvent);
+    });
+
+    function runEvent(e) {
+        var txtfield = e.target;
+        var parentTd = txtfield.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let field = txtfield.value;
+        if (field.length == 0) {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+        else if (!field.match(/^[A-Z]/)) {
+            pEle.innerHTML = "POOR(1st caps)";
+            pEle.style.color = "red";
+            m = false;
+        }
+        else if (field.length < 5) {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red"
+            m = false;
+        }
+        else if (!/^[A-Z][A-Za-z\s]*$/.test(field)) {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+        else {
+            pEle.innerHTML = "STRONG";
+            pEle.style.color = "green";
+            m = true;
+        }
+    }
+
+    //for email
+    var email = document.querySelector('input[type="email"]');
+    email.addEventListener('keyup', runemail);
+
+    function runemail(em) {
+        var email = em.target;
+        var parentTd = email.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let eval = email.value;
+        if (!/^[A-Za-z0-9]{2,}(\.[A-Za-z0-9]{2,})?@[A-Za-z]{4,}\.[A-Za-z]{2,4}$/.test(eval)) {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        } else {
+            pEle.innerHTML = "VALID";
+            pEle.style.color = "green";
+            m = true;
+        }
+    }
+
+    //FOR password
+    var pwd = document.querySelector("#pwd");
+    pwd.addEventListener('keyup', runpwd);
+
+    function runpwd(pw) {
+        var pwd = pw.target;
+        var parentTd = pwd.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let pwdval = pwd.value;
+        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z]).{4,}$/.test(pwdval)) {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+        else if (pwdval.length < 8) {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+        else {
+            pEle.innerHTML = "STRONG";
+            pEle.style.color = "green";
+            m = true;
+        }
+    }
+
+    // for rpwd
+    var pwd = document.querySelector("#rpwd");
+    pwd.addEventListener('keyup', runrpwd);
+
+    function runrpwd(rpw) {
+        let pwd = document.getElementById("pwd");
+        var rpwd = rpw.target;
+        var parentTd = rpwd.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let rpwdval = rpwd.value;
+        if (rpwdval.length < 8) {
+            if (pwd.value != rpwdval) {
+                pEle.innerHTML = "POOR OR MISMATCH";
+                pEle.style.color = "red";
+                m = false;
+            }
+            else {
+                pEle.innerHTML = "POOR";
+                pEle.style.color = "red";
+                m = false;
+            }
+        }
+        else {
+            if (pwd.value == rpwdval) {
+                pEle.innerHTML = "MATCH";
+                pEle.style.color = "green";
+                m = true;
+            }
+            else {
+                pEle.innerHTML = "MISMATCH";
+                pEle.style.color = "red";
+                m = false;
+            }
+        }
+    }
+
+    //for age
+    var age = document.querySelector('#age');
+    age.addEventListener('keyup', runage);
+
+    function runage(ag) {
+        var age = ag.target;
+        var parentTd = age.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let ageval = age.value;
+        if (ageval.match(/^[0-9]{1,2}$/)) {
+            pEle.innerHTML = "STRONG";
+            pEle.style.color = "green";
+            m = true;
+        } else {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+    }
+
+    //for phone number
+    //for age
+    var phn = document.querySelector('#ph');
+    phn.addEventListener('keyup', runph);
+
+    function runph(ph) {
+        var phn = ph.target;
+        var parentTd = phn.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let phnval = phn.value;
+        if (phnval.match(/^[6-9][0-9]{9}$/)) {
+            pEle.innerHTML = "STRONG";
+            pEle.style.color = "green";
+            m = true;
+        } else {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+    }
+
+    // for address
+    var addr = document.querySelector('#ad');
+    addr.addEventListener('keyup', runad);
+
+    function runad(adr) {
+        var addr = adr.target;
+        var parentTd = addr.parentNode;
+        var siblingTd = parentTd.nextElementSibling;
+        var pEle = siblingTd.querySelector('p');
+        let addrval = addr.value;
+        if (addrval.length > 15) {
+            pEle.innerHTML = "STRONG";
+            pEle.style.color = "green";
+            m = true;
+        } else {
+            pEle.innerHTML = "POOR";
+            pEle.style.color = "red";
+            m = false;
+        }
+    }
+
+    function register() {
+        if (m == true) {
+            location.assign("output.html");
+        }
+        else if (m == false) {
+            alert("Make all GREEN")
+        }
+    }
+</script>
+
+</html>

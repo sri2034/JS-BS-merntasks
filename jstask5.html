@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 5</title>
+    <style>
+        td{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+        <table align="center">
+            <tr>
+                <td align="right"><label for="name">Name: </label></td>
+                <td><input id="name" type="text"></td>
+                <td>
+                    <p id="n1"></p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"><label for="email">Email: </label></td>
+                <td><input id="email" type="email"></td>
+                <td>
+                    <p id="n2"></p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"><label for="web">Website:</label></td>
+                <td><input id="web" type="text"></td>
+                <td>
+                    <p id="n3"></p>
+                </td>
+            </tr>
+            <tr>
+                <td align="right"><label for="msg">Message: </label></td>
+                <td>
+                    <textarea name="msg" id="msg" cols="25" rows="5"></textarea>
+                </td>
+                <td>
+                    <p id="n4"></p>
+                </td>
+            </tr>  
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" onclick="return validate()"></td>
+            </tr>
+        </table>
+
+    <script>
+        function validate() {
+            let name = document.getElementById("name");
+            let email = document.getElementById("email");
+            let web = document.getElementById("web");
+            let msg = document.getElementById("msg");
+            let n1 = document.getElementById("n1");
+            let n2 = document.getElementById("n2");
+            let n3 = document.getElementById("n3");
+            let n4 = document.getElementById("n4");
+
+            n1.innerHTML = "";
+            n2.innerHTML = "";
+            n3.innerHTML = "";
+            n4.innerHTML = "";
+            name.style.borderColor = "";
+            email.style.borderColor = "";
+            web.style.borderColor = "";
+            msg.style.borderColor = "";
+            let v = true;
+            if (name.value === "") {
+                n1.innerHTML = "This field is required";
+                document.getElementById("name").style.border = "2px solid red";
+                n1.style.color = "red";
+                v = false;
+            }
+            if (email.value === "") {
+                n2.innerHTML = "This field is required";
+                document.getElementById("email").style.border = "2px solid red";
+                n2.style.color = "red";
+                v = false;
+            }
+            else if(!email.value.match(/^[A-Za-z0-9]{2,}(\.[A-Za-z0-9]{2,})?@[A-Za-z]{4,}\.[A-Za-z]{2,4}$/)){
+                n2.innerHTML = "A valid email address is required";
+                document.getElementById("email").style.border = "2px solid red";
+                n2.style.color = "red";
+                v = false;
+            }
+            if (web.value === "") {
+                n3.innerHTML = "This field is required";
+                document.getElementById("web").style.border = "2px solid red";
+                n3.style.color = "red";
+                v = false;
+            }
+            else if(!web.value.match(/^(https|http)?:\/\/(www|WWW)?\.[A-Za-z0-9]{3,}\.(com|in)/i)){
+                n3.innerHTML = "A valid url is required";
+                document.getElementById("web").style.border = "2px solid red";
+                n3.style.color = "red";
+                v = false;
+            }
+            if (msg.value === "") {
+                n4.innerHTML = "This field is required";
+                document.getElementById("msg").style.border = "2px solid red";
+                n4.style.color = "red";
+                v = false;
+            }
+            if(v==true){
+                location.assign("output.html");
+            }
+        }
+    </script>
+</body>
+
+</html>

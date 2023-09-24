@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TASK 3</title>
+    <style>
+        center {
+            font-size: 40px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 50px;
+            color: coral;
+        }
+
+        input {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 20px;
+        }
+
+        button {
+            position: relative;
+            display: inline-block;
+            padding: 15px 20px;
+            color: rgb(29, 23, 203);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.5s;
+            letter-spacing: 2px;
+            overflow: hidden;
+            font-weight: bolder;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;   
+        }
+
+        button:hover {
+            background: chartreuse;
+            color: #06535b;
+            box-shadow: 0 0 5px chartreuse,
+                0 0 25px chartreuse,
+                0 0 20px chartreuse,
+                0 0 5px chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table>
+            <tr>
+                <td><label>1st Number</label></td>
+                <td><input type="number" id="num1"></td>
+            </tr>
+            <tr>
+                <td><label>2nd Number</label></td>
+                <td><input type="number" id="num2"></td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="Multiply()">Multiply</button></td>
+                <td><button type="button" onclick="Divide()">Divide</button></td>
+            </tr>
+            <tr align="center">
+                <td rowspan="2" colspan="2"><div id="res"></div></td>
+            </tr>
+        </table>
+
+
+        
+    </center>
+</body>
+
+<script>
+    function Multiply() {
+        let num1 = document.getElementById("num1");
+        let num2 = document.getElementById("num2");
+        let res = document.getElementById("res");
+
+        if (num1.value === "" || num2.value === "") {
+            res.innerHTML = "Enter numbers";
+        } else {
+            num1 = parseFloat(num1.value);
+            num2 = parseFloat(num2.value);
+
+            let result = num1 * num2;
+
+            res.innerHTML = "<br>The Result Is : <br>" + result;
+        }
+    }
+
+    function Divide() {
+        let num1 = document.getElementById("num1");
+        let num2 = document.getElementById("num2");
+        let res = document.getElementById("res");
+
+        if (num1.value === "" || num2.value === "") {
+            res.innerHTML = "Enter numbers";
+        } else {
+            num1 = parseFloat(num1.value);
+            num2 = parseFloat(num2.value);
+
+            if (num2 !== 0) {
+                let resdiv = num1 / num2;
+                res.innerHTML = "<br>The Result Is : <br>" + resdiv;
+            } else {
+                res.innerHTML = "The denominator cannot be zero";
+            }
+        }
+    }
+</script>
+
+</html>

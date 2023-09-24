@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS TASK 6</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px #888888;
+            text-align: center;
+        }
+        .input-container {
+            position: relative;
+        }
+        i {
+            border-right: 2px solid #ccc;
+            padding: 11px;
+            background-color: #cccccc94;
+            border-radius: 3px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        .input-container i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 50%;
+            padding: 10px 30px 10px 50px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 2px;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #2b21df;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 275px;
+            height: 40px;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #2b21df61;
+        }
+        #fp {
+            float: right;
+        }
+        #y1 {
+            padding: 20px;
+        }
+        table {
+            position: relative;
+            left: 30px;
+        }
+        td {
+            padding: 20px;
+        }
+        #lb1 {
+            font-family: 'Times New Roman', Times, serif !important;
+            font-style: italic;
+            font-size: 40px;
+            margin: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: rgb(28, 161, 213);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p id="lb1">Instagram</p>
+        <form action="profile.html" method="get" onsubmit="return validate()">
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" id="uname" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="pwd" name="password" placeholder="Password" required>
+            </div>
+            <input type="submit" value="Log in"><br>
+            <table>
+                <tr>
+                    <td><input type="checkbox"> Remember me</td>
+                    <td id="fp"><a href="forgot.html">Forgot Password?</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div id="y1" align="center">Don't have an account! <a href="signup.html">Sign up here</a>.</div>
+</body>
+<script>
+    function validate() {
+        let uname = document.getElementById("uname").value;
+        let pwd = document.getElementById("pwd").value;
+        if (uname.length < 6 || uname.length > 20) {
+            alert('Username must be between 6 and 20 characters.');
+            return false;
+        }
+
+        // Password validation
+        if (pwd.length < 8) {
+            alert('Password must be at least 8 characters.');
+            return false;
+        }
+        else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z]).{8,}$/.test(pwd)) {
+            alert("password did not match the format")
+            return false;
+        }
+        return true;
+    }
+
+</script>
+
+</html>
