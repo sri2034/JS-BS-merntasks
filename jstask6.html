@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
         }
+
         .container {
             width: 400px;
             margin: 0 auto;
@@ -18,9 +19,11 @@
             box-shadow: 0px 0px 10px #888888;
             text-align: center;
         }
+
         .input-container {
             position: relative;
         }
+
         i {
             border-right: 2px solid #ccc;
             padding: 11px;
@@ -29,11 +32,13 @@
             border-top-right-radius: 0px;
             border-bottom-right-radius: 0px;
         }
+
         .input-container i {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
         }
+
         input[type="text"],
         input[type="password"] {
             width: 50%;
@@ -44,6 +49,7 @@
             border-bottom-left-radius: 5px;
             border-top-left-radius: 5px;
         }
+
         input[type="submit"] {
             background-color: #2b21df;
             color: #fff;
@@ -55,28 +61,49 @@
             height: 40px;
             font-weight: bold;
         }
+
+        .alert {
+            position: relative;
+            padding: .75rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: .25rem
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb
+        }
+
         input[type="submit"]:hover {
             background-color: #2b21df61;
         }
+
         #fp {
             float: right;
         }
+
         #y1 {
             padding: 20px;
         }
+
         table {
             position: relative;
             left: 30px;
         }
+
         td {
             padding: 20px;
         }
+
         #lb1 {
             font-family: 'Times New Roman', Times, serif !important;
             font-style: italic;
             font-size: 40px;
             margin: 20px;
         }
+
         a {
             text-decoration: none;
             color: rgb(28, 161, 213);
@@ -87,6 +114,7 @@
 <body>
     <div class="container">
         <p id="lb1">Instagram</p>
+        <p id="msg"></p>
         <form action="profile.html" method="get" onsubmit="return validate()">
             <div class="input-container">
                 <i class="fas fa-user"></i>
@@ -111,18 +139,19 @@
     function validate() {
         let uname = document.getElementById("uname").value;
         let pwd = document.getElementById("pwd").value;
+        let msg = document.getElementById("msg");
         if (uname.length < 6 || uname.length > 20) {
-            alert('Username must be between 6 and 20 characters.');
+            msg.innerHTML = "<p class='alert alert-danger'>Enter Valid username</p>"
             return false;
         }
 
         // Password validation
         if (pwd.length < 8) {
-            alert('Password must be at least 8 characters.');
+            msg.innerHTML = "<p class='alert alert-danger'>Password length error!</p>"
             return false;
         }
         else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z]).{8,}$/.test(pwd)) {
-            alert("password did not match the format")
+            msg.innerHTML = "<p class='alert alert-danger'>InValid password</p>"
             return false;
         }
         return true;
