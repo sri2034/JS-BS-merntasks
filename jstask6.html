@@ -151,7 +151,7 @@
             return false;
         }
         else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])(?=.*[a-zA-Z]).{8,}$/.test(pwd)) {
-            msg.innerHTML = "<p class='alert alert-danger'>InValid password</p>"
+            msg.innerHTML = "<p class='alert alert-danger'>Password criteria mismatch</p>"
             return false;
         }
         return true;
